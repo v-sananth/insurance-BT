@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { HoldingsProvider } from './components/MyHoldings/HoldingsContext';
+import MyHoldingsCard from './components/MyHoldings/MyHoldingsCard';
+
+const theme = createTheme({
+  palette: {
+    mode: 'light', // Change to 'dark' for dark mode
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <HoldingsProvider>
+        <MyHoldingsCard />
+      </HoldingsProvider>
+    </ThemeProvider>
   );
 }
 
